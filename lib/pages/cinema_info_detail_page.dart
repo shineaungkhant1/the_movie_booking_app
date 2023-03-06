@@ -8,18 +8,12 @@ import '../resources/dimens.dart';
 import '../widgets/custom_chip_shape.dart';
 
 class CinemaInfoDetailPage extends StatefulWidget {
-
-
-
   @override
   State<CinemaInfoDetailPage> createState() => _CinemaInfoDetailPageState();
 }
 
 class _CinemaInfoDetailPageState extends State<CinemaInfoDetailPage> {
-
-
-
-  bool isFavorite  = false;
+  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,39 +22,39 @@ class _CinemaInfoDetailPageState extends State<CinemaInfoDetailPage> {
         centerTitle: true,
         backgroundColor: STARTING_APP_BG_COLOR,
         leading: GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.pop(context);
             },
             child: Icon(Icons.chevron_left)),
-          title: const Text(
-            "Cinema Details",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: TEXT_REGULAR_3X,
-                fontWeight: FontWeight.w700),
-          ),
+        title: const Text(
+          "Cinema Details",
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: TEXT_REGULAR_3X,
+              fontWeight: FontWeight.w700),
+        ),
         actions: [
           GestureDetector(
-            onTap: (){
+            onTap: () {
               setState(() {
                 isFavorite = !isFavorite;
               });
             },
             child: Container(
-               width: 20,
-                height: 20,
+              width: 20,
+              height: 20,
               margin: EdgeInsets.only(right: MARGIN_MEDIUM_3),
-              child: Image.asset("assets/icons/ic_favourite.png",color: isFavorite ? PRIMARY_GREEN : null,),
+              child: Image.asset(
+                "assets/icons/ic_favourite.png",
+                color: isFavorite ? PRIMARY_GREEN : null,
+              ),
             ),
           )
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            VideoBannerSection(),
-            CinemaDetailsInfoView()
-          ],
+          children: [VideoBannerSection(), CinemaDetailsInfoView()],
         ),
       ),
     );
@@ -68,57 +62,61 @@ class _CinemaInfoDetailPageState extends State<CinemaInfoDetailPage> {
 }
 
 class CinemaDetailsInfoView extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        left: MARGIN_MEDIUM_2,
-        right: MARGIN_MEDIUM_2
-      ),
+      margin: EdgeInsets.only(left: MARGIN_MEDIUM_2, right: MARGIN_MEDIUM_2),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 20,),
-          Text("JCGV: Junction City",
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: TEXT_REGULAR_2X,
-            fontWeight: FontWeight.w600
-          ),),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            "JCGV: Junction City",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: TEXT_REGULAR_2X,
+                fontWeight: FontWeight.w600),
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             children: [
               Expanded(
-                  flex: 3,
-                  child: Text(
-                // textAlign: TextAlign.center,
-                "Q5H3+JPP, Corner of,Bogyoke Lann,Yangon",
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
-                softWrap: false,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: TEXT_REGULAR_3X,
-                    fontWeight: FontWeight.w600),
-              ),),
-
+                flex: 3,
+                child: Text(
+                  // textAlign: TextAlign.center,
+                  "Q5H3+JPP, Corner of,Bogyoke Lann,Yangon",
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                  softWrap: false,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: TEXT_REGULAR_3X,
+                      fontWeight: FontWeight.w600),
+                ),
+              ),
               Expanded(
                 flex: 1,
-                child:  Container(
+                child: Container(
                   width: 30,
                   height: 30,
-                  child: Image.asset("assets/icons/ic_map_location_green.png"),),),
-
+                  child: Image.asset("assets/icons/ic_map_location_green.png"),
+                ),
+              ),
             ],
           ),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           FacilitiesSectionView(),
-          SizedBox(height: 30,),
+          SizedBox(
+            height: 30,
+          ),
           SafetySectionView(),
-
-
         ],
       ),
     );
@@ -127,10 +125,13 @@ class CinemaDetailsInfoView extends StatelessWidget {
 
 class FacilitiesSectionView extends StatelessWidget {
   var facilitiesItemList = <FacilitiesItemObject>[
-    FacilitiesItemObject("Parking","assets/icons/ic_parking_green.png"),
-    FacilitiesItemObject("Online Food","assets/icons/ic_online_food_green.png"),
-    FacilitiesItemObject("Wheel Chair","assets/icons/ic_wheel_chair_green.png"),
-    FacilitiesItemObject("Ticket Cancellation","assets/icons/ic_ticket_cancelation_green.png")
+    FacilitiesItemObject("Parking", "assets/icons/ic_parking_green.png"),
+    FacilitiesItemObject(
+        "Online Food", "assets/icons/ic_online_food_green.png"),
+    FacilitiesItemObject(
+        "Wheel Chair", "assets/icons/ic_wheel_chair_green.png"),
+    FacilitiesItemObject(
+        "Ticket Cancellation", "assets/icons/ic_ticket_cancelation_green.png")
   ];
 
   @override
@@ -139,12 +140,13 @@ class FacilitiesSectionView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Facilities",
+        Text(
+          "Facilities",
           style: TextStyle(
               color: Colors.white,
               fontSize: TEXT_REGULAR_2X,
-              fontWeight: FontWeight.w600
-          ),),
+              fontWeight: FontWeight.w600),
+        ),
         Wrap(
           spacing: 4.0, // spacing between adjacent chips
           // runSpacing: 1.0,
@@ -152,19 +154,21 @@ class FacilitiesSectionView extends StatelessWidget {
           children: facilitiesItemList
               .map(
                 (facilitiesItem) => FacilitiesItemView(facilitiesItem),
-          )
+              )
               .toList(),
         )
       ],
     );
   }
 }
+
 class FacilitiesItemObject {
   String title = "";
   String iconLink = "";
 
   FacilitiesItemObject(this.title, this.iconLink);
 }
+
 class FacilitiesItemView extends StatelessWidget {
   final FacilitiesItemObject facilityItem;
 
@@ -181,20 +185,28 @@ class FacilitiesItemView extends StatelessWidget {
           height: 40,
           child: Image.asset(facilityItem.iconLink),
         ),
-        Text(facilityItem.title,style: TextStyle(
-          color: PRIMARY_GREEN,
-          fontWeight: FontWeight.w500,
-          fontSize: TEXT_REGULAR_1X
-        ),)
+        Text(
+          facilityItem.title,
+          style: TextStyle(
+              color: PRIMARY_GREEN,
+              fontWeight: FontWeight.w500,
+              fontSize: TEXT_REGULAR_1X),
+        )
       ],
     );
   }
 }
 
 class SafetySectionView extends StatelessWidget {
-  List<String> safetyList = ["Thermal Scanning", "Contactless Security Check",
-    "Sanitization Before Every Show", "Disposable 3D glass","Contactless Food Service",
-    "Package Food","Deep Cleaning of rest room"];
+  List<String> safetyList = [
+    "Thermal Scanning",
+    "Contactless Security Check",
+    "Sanitization Before Every Show",
+    "Disposable 3D glass",
+    "Contactless Food Service",
+    "Package Food",
+    "Deep Cleaning of rest room"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -202,13 +214,16 @@ class SafetySectionView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Safety",
+        const Text(
+          "Safety",
           style: TextStyle(
               color: Colors.white,
               fontSize: TEXT_REGULAR_2X,
-              fontWeight: FontWeight.w600
-          ),),
-        const SizedBox(height: 10,),
+              fontWeight: FontWeight.w600),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
         Wrap(
           spacing: 4.0, // spacing between adjacent chips
           // runSpacing: 1.0,
@@ -216,13 +231,14 @@ class SafetySectionView extends StatelessWidget {
           children: safetyList
               .map(
                 (safetyItem) => SafetyChipView(safetyItem),
-          )
+              )
               .toList(),
         )
       ],
     );
   }
 }
+
 class SafetyChipView extends StatelessWidget {
   final String safetyItemText;
 
@@ -231,33 +247,38 @@ class SafetyChipView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 4.0,bottom: 4.0),
-      child: CustomChip(safetyItemText,PRIMARY_GREEN,8.0),
+      padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+      child: CustomChip(safetyItemText, PRIMARY_GREEN, 8.0),
     );
   }
 }
+
 class VideoBannerSection extends StatelessWidget {
- // FlickManager flickManager;
-
-  //VideoBannerSection(this.flickManager);
-
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 200,
       child: Stack(
         children: [
-          Positioned.fill(child:
-          // FlickVideoPlayer(
-          //     flickManager: flickManager
-          // ),
-          Image.asset("assets/images/cinema_pic.png",fit: BoxFit.cover,),
+          Positioned.fill(
+            child:
+                // FlickVideoPlayer(
+                //     flickManager: flickManager
+                // ),
+                Image.asset(
+              "assets/images/cinema_pic.png",
+              fit: BoxFit.cover,
+            ),
           ),
-          Align(alignment: Alignment.center,
+          Align(
+            alignment: Alignment.center,
             child: Container(
-                width: 50,
-                height: 50,
-                child: Image.asset("assets/images/play_btn_pic.png",)),
+              width: 50,
+              height: 50,
+              child: Image.asset(
+                "assets/images/play_btn_pic.png",
+              ),
+            ),
           )
         ],
       ),
